@@ -15,6 +15,52 @@ namespace CSharpAlgo
         public static void TestAnagram()
         {
             var words = new string[] { "bao", "abab", "aob", "meteor", "remote", "thing", "night", "marie", "aimer"};
+           
+            List<string> anagrame= new List<string>();
+            List<string> pasanagrame = new List<string>();
+            string match = string.Empty;
+
+            foreach (var item in words)
+            {
+                foreach (var word in words)
+                {
+                    if (item.Length == word.Length&&item!= word)
+                    {
+                        match = string.Empty;
+                        for (int i = 0; i < item.Length; i++)
+                        {
+                            
+                            if (word.Contains(item[i]))
+                                match += item[i];
+                        }
+                        if (match == item)
+                        {
+                            Console.WriteLine("anagrame");
+                            Console.WriteLine(item + " " + word);
+                            anagrame.Add(item);
+                        }
+
+                        else
+                        {
+                            
+                            pasanagrame.Add(item);
+                        }
+                    }
+                }
+                
+            }
+            //     Console.WriteLine("anagrame");
+            //foreach (var item in anagrame)
+            //{
+               
+            //    Console.WriteLine(item);
+            //}
+            Console.WriteLine("pasanagrame");
+            foreach (var item in pasanagrame)
+            {
+
+                Console.WriteLine(item);
+            }
         }
 
         /// <summary>
@@ -32,6 +78,7 @@ namespace CSharpAlgo
         public static void TestLinqCountOccurence()
         {
             var message = "Welcome to citeo my friend";
+           var result = message.Distinct().Select(e =>  e + message.Where(x=>x==e).Count().ToString());
 
 
         }
